@@ -61,5 +61,7 @@ jobs:
           git add -A -- . ':!.github/workflows'
           if ! git diff --cached --quiet; then
             git commit -m "feat: restore animated DeveloperFolio with refreshed 2026 portfolio and CV"
+            git fetch origin adopt-developerfolio
+            git rebase origin/adopt-developerfolio
             git push origin HEAD:adopt-developerfolio
           fi
