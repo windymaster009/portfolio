@@ -1,55 +1,54 @@
-# Kevin Nhim / Windy — Portfolio (2026)
+# Kevin Nhim / Windy — Developer Portfolio
 
-A new, responsive developer portfolio and CV for **Kevin Nhim**, built using content from the older [DeveloperFolio](https://github.com/windymaster009/DeveloperFolio), the earlier personal site, and recent projects.
+This is Kevin Nhim's developer portfolio, based on the design, animations, components, and layout of [DeveloperFolio](https://github.com/windymaster009/DeveloperFolio), now with a refreshed **2026 CV**, new professional and personal projects, updated text, and the original illustrated React experience.
 
-## Highlights
+The previous lightweight static website was replaced because the DeveloperFolio presentation works better for this portfolio. It remains accessible in the Git history before the migration.
 
-- Responsive light-mode editorial design, custom CSS project illustrations, and subtle reveal animations.
-- Professional vs personal vs public/open-source project filters.
-- Payment platform, VaultHub, Telegram E-Shop, WindyCast, Telegram Drive, Solar Home/Pi Lab, and Phone Admin Dashboard case studies.
-- Experience timeline, skills, three schools, and contact links.
-- Printable CV at [cv.html](./cv.html) plus downloadable [PDF](./Kevin_Nhim_CV_2026.pdf).
-- Zero JavaScript framework dependencies; no npm install or compilation required.
-- Keyboard-friendly navigation, reduced-motion support, semantic content, responsive layouts.
+## What you'll see
 
-## Preview locally
+- DeveloperFolio light-mode layout, Lottie illustrations, cards and reveal animations.
+- GitHub public-repository statistics and featured projects, generated at build/start time.
+- Updated project cards: payment platform engineering, VaultHub, Telegram E-Shop, WindyCast, Telegram Drive, Solar Home, Android Scanner and automation.
+- Existing three schools, work history and technical skills.
+- **Updated CV** in `public/Kevin_Nhim_CV_2026.pdf`, accessible at `/Kevin_Nhim_CV_2026.pdf`.
+- Printable CV web page at `/cv.html`.
+- Personal project links only when public; internal work and private repository links stay private.
 
-```bash
-git clone git@github.com:windymaster009/portfolio.git
-cd portfolio
-python3 -m http.server 3031
-```
+## Run locally on Windows
 
-Open `http://localhost:3031`. For editing, modify `index.html`, `cv.html`, and `assets/styles.css`.
+Install [Node.js LTS](https://nodejs.org/) if necessary. From Command Prompt:
 
-## Raspberry Pi / PM2
-
-On the Raspberry Pi, with the private repository accessible through GitHub SSH credentials:
-
-```bash
-git clone git@github.com:windymaster009/portfolio.git
-cd portfolio
-pm2 serve . 3031 --name windy-portfolio
-pm2 save
-```
-
-Choose port **3031** to avoid conflicting with an existing site on 3030. If using Cloudflare Tunnel, map the new hostname to `http://localhost:3031`. After subsequent updates:
-
-```bash
-cd ~/portfolio
+```cmd
+cd /d E:\portfolio
 git pull --ff-only origin main
-pm2 restart windy-portfolio
+npm install --legacy-peer-deps
+npm start
 ```
 
-No build or dependency installation is necessary.
+Visit **http://localhost:3000**. React's development server runs on 3000 by default; if port 3000 is already occupied, npm may ask to use another.
 
-## Before public launch
+**Important:** This is a React app, not the previous no-build static site. Don't use `python -m http.server 3031` from the repository root anymore.
 
-- Confirm dates of employment: the older site listed CISA from **Nov 2022**, and the current payment-platform job did not specify a start date.
-- Confirm which professional project details are safe to publish. No private repository links or proprietary source code are shared here.
-- Review CV wording, contact details, and project claims before applying.
-- The current GitHub repository is private. To launch a public site, deploy it with your chosen host or explicitly change the repository visibility.
+## Production build
 
-## Attribution
+```bash
+npm install --legacy-peer-deps
+npm run build
+npx serve -s build -l 3031
+```
 
-This site is **new code** and is not a copy of the old DeveloperFolio theme. It carries over factual biography and portfolio content, not the GPL-licensed layout/assets. The older DeveloperFolio repository remains unchanged.
+Visit **http://localhost:3031**. The static build can be deployed to any static host. The original `scripts/deploy-pi.sh` and PM2 configuration also remain available for later, but you do not need a Raspberry Pi to test locally.
+
+## Customize
+
+- `src/portfolio.js`: greeting, CV URL, work experience, education, skills, project cards and links.
+- `src/containers`: React sections and animations.
+- `src/assets`: images, Lottie assets and logos.
+- `src/_globalColor.scss`: color palette.
+- `fetch.js`: build-time GitHub stats, not credentials shipped to the browser.
+
+Before sending CV applications, confirm the end/start dates for CISA and the current payment-platform role. Don't add confidential client data or private repository source.
+
+## Attribution and license
+
+The design and source are based on the original **saadpasta/developerFolio**, as modified in [windymaster009/DeveloperFolio](https://github.com/windymaster009/DeveloperFolio). Its existing **GPL-3.0** license and applicable asset attributions are retained here in `LICENSE`. Additional project data and original logos were prepared for Kevin Nhim.
