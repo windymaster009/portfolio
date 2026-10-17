@@ -28,7 +28,7 @@ jobs:
           python - <<'PY'
           import urllib.request, io, qrcode
           from PIL import Image
-          url = 'https://raw.githubusercontent.com/windymaster009/kevin.github.io/main/assets/img/pfp-with-bgs.jpg'
+          url = 'https://raw.githubusercontent.com/windymaster009/kevin.github.io/main/assets/img/about.jpg'
           data = urllib.request.urlopen(url, timeout=40).read()
           portrait = Image.open(io.BytesIO(data)).convert('RGB')
           portrait.save('public/cv-portrait.jpg', quality=90)
