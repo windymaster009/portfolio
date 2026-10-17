@@ -1,0 +1,42 @@
+[
+  {
+    "name": "solarhome-home",
+    "url": "http://127.0.0.1:5173/",
+    "status": "failed",
+    "error": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:5173/\nCall log:\n  - navigating to \"http://127.0.0.1:5173/\", waiting until \"domcontentloaded\"\n",
+    "errors": []
+  },
+  {
+    "name": "solarhome-products",
+    "url": "http://127.0.0.1:5173/products",
+    "status": "failed",
+    "error": "Error: page.goto: net::ERR_CONNECTION_REFUSED at http://127.0.0.1:5173/products\nCall log:\n  - navigating to \"http://127.0.0.1:5173/products\", waiting until \"domcontentloaded\"\n",
+    "errors": []
+  },
+  {
+    "name": "sonic-automotive-home",
+    "url": "http://127.0.0.1:5174/",
+    "status": "captured",
+    "http": 200,
+    "info": {
+      "title": "SonicAutoMotive",
+      "text": " Home\n Contact\n About\n \naddcart\n\n\n\n\n\n\nGR supra\n\nIt is not a car It is Ak47\n\nGTR35\n\nLegendary Godzila\n\n\n\nSee All Car Here\n\n\n\n\n\nDeveloped and maintained by @SonicAutoMotive",
+      "bodyHeight": 1118,
+      "rootChildren": 13
+    },
+    "errors": []
+  },
+  {
+    "name": "sonic-automotive-bmw",
+    "url": "http://127.0.0.1:5174/bmw",
+    "status": "captured",
+    "http": 200,
+    "info": {
+      "title": "SonicAutoMotive",
+      "text": " Home\n Contact\n About\n \naddcart\n\n\n\n\n\n\n\n\n\n\n\nDeveloped and maintained by @SonicAutoMotive",
+      "bodyHeight": 803,
+      "rootChildren": 11
+    },
+    "errors": []
+  }
+]

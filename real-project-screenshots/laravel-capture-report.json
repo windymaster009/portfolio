@@ -1,0 +1,28 @@
+[
+  {
+    "name": "laravel-e-shop-home",
+    "url": "http://127.0.0.1:8000/",
+    "status": "captured",
+    "http": 200,
+    "info": {
+      "title": "E-SHOP || HOME PAGE",
+      "text": " (+855) 12 345 678  npic@test.com\n Login / Register\nAll Category\nAll Category\nTest-Cote 2\nTesting\n0\n \n0\nHome\nAbout Us\nProducts\nNEW\nCategory\nContact Us\nBanner\n\nUp to 40%\n\n\nSHOP NOW\nPrevious\nNext\nTesting\nDISCOVER NOW\nTest-Cote 2\nDISCOVER NOW\nTrending Item\nALL PRODUCTS TESTING TEST-COTE 2\nNEW\n \nADD TO CART\ntesting-pro 2\n$200.00 $200.00\nNEW\n \nADD TO CART\ntesting\n$4,500.00 $5,000.00\n\nTESTING\n\nTESTING\nUP TO 10%\nSHOP NOW\n\nTEST-COTE 2\n\nTESTING-PRO 2\nUP TO 0%\nSHOP NOW\nHot Item\nLatest Items\ntesting-pro 2\n\n$0.00\n\ntesting\n\n$10.00\n\n73.9k\nShares\n 56.3k\n 6.8k\n 1.7k\n 2.2k\n 42"
+    },
+    "errors": [
+      "Cannot read properties of undefined (reading 'clone')"
+    ]
+  },
+  {
+    "name": "laravel-e-shop-products",
+    "url": "http://127.0.0.1:8000/product-grids",
+    "status": "captured",
+    "http": 200,
+    "info": {
+      "title": "E-SHOP || PRODUCT PAGE",
+      "text": " (+855) 12 345 678  npic@test.com\n Login / Register\nAll Category\nAll Category\nTest-Cote 2\nTesting\n0\n \n0\nHome\nAbout Us\nProducts\nNEW\nCategory\nContact Us\nHome Shop Grid\nCategories\nTest-Cote 2\nTesting\nShop By Price\nFilter\nRange: \nRecent Post\ntesting-pro 2\n\n$200.00 $200.00\n\ntesting\n\n$5,000.00 $4,500.00\n\nBrands\nA\nB\nC\nTesting Brand\nShow :\nDefault\nDefault\n09\n15\n21\n30\n \nSort By :\nDefault\nDefault\nName\nPrice\nCategory\nBrand\n \n10 % OFF\n \nADD TO CART\ntesting\n$4,500.00 $5,000.00\n \nADD TO CART\ntesting-pro 2\n$200.00 $200.00\n595\nShares\n 263\n 107\n 99\n 60"
+    },
+    "errors": [
+      "Cannot read properties of undefined (reading 'clone')"
+    ]
+  }
+]
