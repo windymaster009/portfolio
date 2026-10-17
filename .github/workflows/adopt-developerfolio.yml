@@ -1,0 +1,65 @@
+name: Import original DeveloperFolio into new portfolio
+on:
+  push:
+    branches: [adopt-developerfolio]
+    paths:
+      - .github/workflows/adopt-developerfolio.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Checkout new portfolio branch
+        uses: actions/checkout@v4
+        with:
+          ref: adopt-developerfolio
+          persist-credentials: true
+      - name: Download original DeveloperFolio source
+        run: git clone --depth 1 --branch main https://github.com/windymaster009/DeveloperFolio.git "$RUNNER_TEMP/old-folio"
+      - name: Restore DeveloperFolio and integrate latest CV
+        shell: bash
+        run: |
+          set -euo pipefail
+          rsync -a --exclude=.git --exclude=.github --exclude=README.md "$RUNNER_TEMP/old-folio/" "./"
+          mkdir -p public
+          cp Kevin_Nhim_CV_2026.pdf public/Kevin_Nhim_CV_2026.pdf
+          cp cv.html public/cv.html
+          sed -i 's#\./assets/favicon.svg#./favicon.svg#g; s#\./index.html#./#g' public/cv.html
+          rm -f index.html cv.html
+          rm -rf assets
+          node --check scripts/refresh-portfolio.cjs
+          node scripts/refresh-portfolio.cjs
+          test -s public/index.html
+          test -s public/Kevin_Nhim_CV_2026.pdf
+          test -s public/cv.html
+          test -s src/portfolio.js
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install React dependencies
+        run: npm install --legacy-peer-deps --no-audit --no-fund
+      - name: Build the new portfolio
+        env:
+          CI: "false"
+        run: npm run build
+      - name: Verify built website and CV
+        run: |
+          test -s build/index.html
+          test -s build/Kevin_Nhim_CV_2026.pdf
+          test -s build/cv.html
+          grep -q "VaultHub" src/portfolio.js
+          grep -q "WindyCast" src/portfolio.js
+      - name: Commit imported application to review branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -A -- . ':!.github/workflows'
+          if ! git diff --cached --quiet; then
+            git commit -m "feat: restore animated DeveloperFolio with refreshed 2026 portfolio and CV"
+            git push origin HEAD:adopt-developerfolio
+          fi
