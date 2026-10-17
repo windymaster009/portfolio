@@ -1,0 +1,25 @@
+[
+  {
+    "name": "solarhome-home",
+    "status": "captured",
+    "http": 200,
+    "info": {
+      "title": "Solar Home",
+      "text": "<\n>\nSolar Home - Solar panels, batteries, inverters, installation service, and home electrical products. Contact us for price and details.\nSolar Home\nAll Catalog\nSolar Panels\nBatteries\nInverters\nSolar Lights\nControllers\nAccessories\nContact Us\nBrowse Catalog\nContact Sales\nFeatured Solar Products\nLatest catalog updates for solar panels, batteries, inverters, and home electrical items.\nBrowse Full Catalog ->\nHOT\nSolar Panels\nMono and poly panels for homes, shops, and farm power.\nSTORAGE\nBatteries\nDeep cycle and lithium storage for day and night use.\nPOWER\nInverters\nHybrid, off-grid, and home backup power systems.\nOUTDOOR\nSolar Lights\nStreet lights, garden lights, flood lights, and sets.\nMPPT\nControllers\nPWM and MPPT controllers for safer charging.\nPARTS\nAccessories\nCables, breakers, mounts, connectors, and tools.\nNeed a full solar setup?\n\nTell us your appliances and daily use. We can suggest panel size, battery capacity, inverter type, and accessories.\n\nRequest recommendation\nWhy customers choose us\nClear product specs and warranty details\nSolar kits for small homes and shop backup\nSupp"
+    },
+    "errors": []
+  },
+  {
+    "name": "solarhome-products",
+    "status": "captured",
+    "http": 200,
+    "info": {
+      "title": "Solar Home",
+      "text": "<\n>\nSolar Home - Solar panels, batteries, inverters, installation service, and home electrical products. Contact us for price and details.\nSolar Home\nAll Catalog\nSolar Panels\nBatteries\nInverters\nSolar Lights\nControllers\nAccessories\nContact Us\nSolar Home Catalog Banner\nProduct Catalog\nAll categories\n▼\nFacebook\nTelegram\nPhone\nSolar Home Categories:\nPanels\nBatteries\nInverters\nLights\nControllers\nAccessories"
+    },
+    "errors": [
+      "Network Error",
+      "Network Error"
+    ]
+  }
+]
