@@ -37,7 +37,7 @@ const greeting = {
   username: "Kevin Nhim",
   title: "Hi all, I am Kevin",
   subTitle: emoji("Software Developer from Cambodia. I build fintech operations tools, full-stack apps, APIs, Telegram bots, automation and self-hosted services. I enjoy making complex workflows reliable and easier to use."),
-  resumeLink: "/Kevin_Nhim_CV_2026.pdf",
+  resumeLink: `${process.env.PUBLIC_URL || ""}/Kevin_Nhim_CV_2026.pdf`,
   displayGreeting: true
 };
 

@@ -1,0 +1,70 @@
+name: Deploy Portfolio to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: portfolio-pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    name: Build React portfolio
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Install frontend dependencies
+        run: npm install --legacy-peer-deps --no-audit --no-fund
+      - name: Build for GitHub Pages
+        env:
+          CI: 'false'
+          GITHUB_USERNAME: windymaster009
+          GITHUB_TOKEN: ${{ github.token }}
+        run: npm run build
+      - name: Validate project URL and CV assets
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s build/index.html
+          test -s build/cv.html
+          test -s build/Kevin_Nhim_CV_2026.pdf
+          test -s build/cv-portrait.jpg
+          test -s build/cv-telegram-qr.png
+          test -s build/profile.json
+          test -s build/github-stats.json
+          grep -q '/portfolio/static/js/' build/index.html
+          grep -q '/portfolio/static/css/' build/index.html
+          grep -q 'href="./Kevin_Nhim_CV_2026.pdf"' build/cv.html
+          echo 'GitHub Pages build and resume links verified.'
+      - name: Upload website for GitHub Pages
+        if: github.event_name != 'pull_request'
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: build
+
+  deploy:
+    name: Publish website
+    if: github.event_name != 'pull_request'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+    steps:
+      - uses: actions/configure-pages@v5
+      - name: Publish to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
