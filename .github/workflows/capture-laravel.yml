@@ -52,6 +52,20 @@ jobs:
           done
           mysql --host=127.0.0.1 --user=root e-shop < database/e-shop.sql
           php artisan key:generate --force
+          echo 'Restoring original product images from archived project storage...'
+          mkdir -p storage/app/public/photos
+          unzip -qq -o storage.zip -d "$RUNNER_TEMP/laravel-media" || true
+          while IFS= read -r -d '' file; do
+            case "$file" in
+              */photos/*)
+                relative="${file#*/photos/}"
+                mkdir -p "storage/app/public/photos/$(dirname "$relative")"
+                cp -n "$file" "storage/app/public/photos/$relative" || true
+                ;;
+            esac
+          done < <(find "$RUNNER_TEMP/laravel-media" -type f -print0)
+          echo "Recovered $(find storage/app/public/photos -type f | wc -l) stored media files."
+          find storage/app/public/photos -type f | head -15 || true
           php artisan storage:link || true
           php artisan config:clear
           mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views
@@ -70,6 +84,7 @@ jobs:
           export CAPTURE_MODULE="$RUNNER_TEMP/capture"
           export CHROME_BIN="$(which google-chrome || which chromium)"
           node scripts/capture-laravel-site.cjs
+          python3 -m pip install --quiet Pillow
           python3 - <<'PY'
           from PIL import Image
           from pathlib import Path
