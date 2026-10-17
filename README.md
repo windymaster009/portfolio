@@ -10,9 +10,23 @@ The previous lightweight static website was replaced because the DeveloperFolio 
 - GitHub public-repository statistics and featured projects, generated at build/start time.
 - Updated project cards: payment platform engineering, VaultHub, Telegram E-Shop, WindyCast, Telegram Drive, Solar Home, Android Scanner and automation.
 - Existing three schools, work history and technical skills.
-- **Updated CV** in `public/Kevin_Nhim_CV_2026.pdf`, accessible at `/Kevin_Nhim_CV_2026.pdf`.
-- Printable CV web page at `/cv.html`.
+- **Updated CV** at `public/Kevin_Nhim_CV_2026.pdf`, automatically served as `/portfolio/Kevin_Nhim_CV_2026.pdf` on GitHub Pages.
+- Printable CV web page at `/portfolio/cv.html` on GitHub Pages.
 - Personal project links only when public; internal work and private repository links stay private.
+
+## Host ONLY this portfolio on GitHub Pages
+
+Deployment workflow: [`.github/workflows/deploy-pages.yml`](.github/workflows/deploy-pages.yml).
+
+1. Open [portfolio → Settings → Pages](https://github.com/windymaster009/portfolio/settings/pages).
+2. In **Build and deployment**, choose **GitHub Actions** under **Source**.
+3. If GitHub requires a public repository because the account uses GitHub Free, go to **Settings → General → Danger Zone → Change repository visibility** and make this repository public **only if you are comfortable showing its code**. GitHub Pro and higher support Pages on private repositories. Do not change any other repository.
+4. Open [Actions → Deploy Portfolio to GitHub Pages](https://github.com/windymaster009/portfolio/actions/workflows/deploy-pages.yml) and run the workflow with **Run workflow** if the initial push happened before Pages was enabled.
+5. After it succeeds, visit **https://windymaster009.github.io/portfolio/**. The CV is at **https://windymaster009.github.io/portfolio/cv.html**.
+
+Once configured, every push to `main` automatically builds and deploys. No Raspberry Pi, PC server, domain purchase, or other project deployment is needed.
+
+The workflow's `build` job also runs on pull requests to catch broken asset links before merging. The website's public GitHub summary is refreshed from the GitHub API at build time.
 
 ## Run locally on Windows
 
