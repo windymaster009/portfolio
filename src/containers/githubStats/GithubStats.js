@@ -108,7 +108,7 @@ export default function GithubStats() {
   const [stats, setStats] = useState(null);
 
   useEffect(() => {
-    fetch("/github-stats.json")
+    fetch(`${process.env.PUBLIC_URL || ""}/github-stats.json`)
       .then(response => {
         if (!response.ok) throw new Error("GitHub stats unavailable");
         return response.json();
