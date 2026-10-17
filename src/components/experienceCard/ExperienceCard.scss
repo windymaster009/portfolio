@@ -2,10 +2,14 @@
 
 .experience-card {
   position: relative;
+  display: flex;
+  flex-direction: column;
   background-color: $lightBackground2;
   box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
   border-radius: 10px;
   border: 1px solid $lightBorder1;
+  overflow: hidden;
+  transition: transform 220ms ease, box-shadow 220ms ease;
 }
 
 .experience-card-dark {
@@ -17,6 +21,7 @@
 }
 
 .experience-card:hover {
+  transform: translateY(-6px);
   box-shadow: $lightBoxShadowDark 0px 20px 30px -10px;
 }
 
@@ -94,8 +99,8 @@
 .experience-text-role {
   text-align: center;
   color: $textColor;
-  font-weight: 700;
-  font-size: 25px;
+  font-weight: 800;
+  font-size: 26px;
   margin: 0px;
   padding-top: 1.5rem;
   line-height: normal;
@@ -104,21 +109,81 @@
   color: $textColorDark !important;
 }
 .experience-text-date {
-  text-align: center;
-  color: $textColor;
-  font-size: 20px;
-  margin: 0px;
-  padding-top: 1rem;
-  font-weight: 600;
+  align-self: center;
+  color: #55198b;
+  background: rgba(85, 25, 139, 0.09);
+  border: 1px solid rgba(85, 25, 139, 0.14);
+  border-radius: 999px;
+  font-size: 14px;
+  margin: 12px 0 0;
+  padding: 7px 13px;
+  font-weight: 800;
 }
 
 .experience-text-desc {
   text-align: center;
+  margin: 20px 0 0;
+  padding: 16px 18px;
+  color: #626a78 !important;
+  background: linear-gradient(135deg, rgba(85, 25, 139, 0.07), rgba(62, 100, 255, 0.05));
+  border-left: 4px solid #6f35b1;
+  border-radius: 0 12px 12px 0;
+  font-size: 17px;
+  line-height: 1.5;
 }
 
 .experience-text-details {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   padding: 1.5rem;
   margin-top: 2rem;
+}
+
+.experience-focus-label {
+  margin: 22px 0 10px;
+  color: #55198b;
+  font-size: 12px;
+  font-weight: 850;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+}
+
+.experience-bullets {
+  display: grid;
+  gap: 9px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.experience-bullets li {
+  position: relative;
+  margin: 0;
+  padding: 10px 12px 10px 38px;
+  color: #4f5867 !important;
+  background: #f8f7fc;
+  border: 1px solid #eeebf5;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 650;
+  line-height: 1.4;
+}
+
+.experience-bullets li::before {
+  content: "✓";
+  position: absolute;
+  left: 12px;
+  top: 9px;
+  display: grid;
+  width: 18px;
+  height: 18px;
+  place-items: center;
+  color: #ffffff;
+  background: linear-gradient(135deg, #55198b, #4464e8);
+  border-radius: 50%;
+  font-size: 11px;
+  font-weight: 900;
 }
 
 /* Media Query */
@@ -132,7 +197,7 @@
     font-size: 22px;
   }
   .experience-text-date {
-    font-size: 18px;
+    font-size: 13px;
   }
   .experience-roundedimg {
     width: 6.5rem;

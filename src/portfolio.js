@@ -5,6 +5,23 @@
 
 import emoji from "react-easy-emoji";
 import splashAnimation from "./assets/lottie/splashAnimation";
+import typescriptLogo from "./assets/images/typescriptLogo.svg";
+import mongodbLogo from "./assets/images/mongodbLogo.svg";
+import npicSchoolLogo from "./assets/images/NPIC logo.png";
+import pucSchoolLogo from "./assets/images/Paññāsāstra University of Cambodia (PUC) logo.jpg";
+import highSchoolPhoto from "./assets/images/Samdech Hun Sen Phnom Penh Thmey High School.jpg";
+import fintechLogo from "./assets/images/fintechLogo.svg";
+import cisaLogo from "./assets/images/cisaLogo.svg";
+import automationLogo from "./assets/images/automationLogo.svg";
+import vaultHubLogo from "./assets/images/vaultHubLogo.svg";
+import eshopLogo from "./assets/images/eshopLogo.svg";
+import windyCastLogo from "./assets/images/windyCastLogo.svg";
+import telegramDriveLogo from "./assets/images/telegramDriveLogo.svg";
+import solarHomeLogo from "./assets/images/solarHomeLogo.svg";
+import scannerLogo from "./assets/images/scannerLogo.svg";
+import piHighlight from "./assets/images/piHighlight.svg";
+import botHighlight from "./assets/images/botHighlight.svg";
+import codeHighlight from "./assets/images/codeHighlight.svg";
 
 const splashScreen = {
   enabled: true,
@@ -59,7 +76,7 @@ const skillsSection = {
   ],
   softwareSkills: [
     {skillName: "JavaScript", fontAwesomeClassname: "fab fa-js", brandColor: "#f7df1e"},
-    {skillName: "TypeScript", imageSrc: require("./assets/images/typescriptLogo.svg"), brandColor: "#3178c6"},
+    {skillName: "TypeScript", imageSrc: typescriptLogo, brandColor: "#3178c6"},
     {skillName: "Python", fontAwesomeClassname: "fab fa-python", brandColor: "#3776ab"},
     {skillName: "Java", fontAwesomeClassname: "fab fa-java", brandColor: "#007396"},
     {skillName: "PHP", fontAwesomeClassname: "fab fa-php", brandColor: "#777bb4"},
@@ -69,7 +86,7 @@ const skillsSection = {
     {skillName: "Node.js", fontAwesomeClassname: "fab fa-node-js", brandColor: "#339933"},
     {skillName: "Vue.js", fontAwesomeClassname: "fab fa-vuejs", brandColor: "#4fc08d"},
     {skillName: "Laravel", fontAwesomeClassname: "fab fa-laravel", brandColor: "#ff2d20"},
-    {skillName: "MongoDB", imageSrc: require("./assets/images/mongodbLogo.svg"), brandColor: "#47a248"},
+    {skillName: "MongoDB", imageSrc: mongodbLogo, brandColor: "#47a248"},
     {skillName: "Docker", fontAwesomeClassname: "fab fa-docker", brandColor: "#2496ed"},
     {skillName: "Linux", fontAwesomeClassname: "fab fa-linux", brandColor: "#111111"},
     {skillName: "Git", fontAwesomeClassname: "fab fa-git-alt", brandColor: "#f05032"},
@@ -85,7 +102,7 @@ const educationInfo = {
   schools: [
     {
       schoolName: "National Polytechnic Institute of Cambodia (NPIC)",
-      logo: "https://pbs.twimg.com/media/DUR8h5IX4AAhV0V.jpg",
+      logo: npicSchoolLogo,
       imageType: "logo",
       accentColor: "#273b97",
       schoolLink: "https://npic.edu.kh/en/",
@@ -100,7 +117,7 @@ const educationInfo = {
     },
     {
       schoolName: "Paññāsāstra University of Cambodia (PUC)",
-      logo: "https://www.puc.edu.kh/wp-content/uploads/2024/09/Logo-4.jpg",
+      logo: pucSchoolLogo,
       imageType: "logo",
       accentColor: "#173b9a",
       schoolLink: "https://www.puc.edu.kh/",
@@ -111,7 +128,7 @@ const educationInfo = {
     },
     {
       schoolName: "Samdech Hun Sen Phnom Penh Thmey High School",
-      logo: "/schools/highschool.jpg",
+      logo: highSchoolPhoto,
       imageType: "photo",
       accentColor: "#c83436",
       subHeader: "High School",
@@ -157,9 +174,9 @@ const workExperiences = {
   display: true,
   experience: [
     {
-      role: "Software Developer",
+      role: "Software Developer at EZgloble Vietnam",
       company: "Payment Platform",
-      companylogo: require("./assets/images/fintechLogo.svg"),
+      companylogo: fintechLogo,
       date: "Current",
       desc:
         "Building and maintaining production payment-platform features across backend services, admin tools and merchant interfaces.",
@@ -173,7 +190,7 @@ const workExperiences = {
     {
       role: "IT Support",
       company: "CISA",
-      companylogo: require("./assets/images/cisaLogo.svg"),
+      companylogo: cisaLogo,
       date: "Started November 2022",
       desc:
         "Provided hands-on IT support and troubleshooting across hardware, software, networking and day-to-day technical operations.",
@@ -186,7 +203,7 @@ const workExperiences = {
     {
       role: "Independent Developer",
       company: "Personal & Open Source Projects",
-      companylogo: require("./assets/images/automationLogo.svg"),
+      companylogo: automationLogo,
       date: "Ongoing",
       desc:
         "Designing, shipping and self-hosting practical projects across bots, automation, web applications and home-server tooling.",
@@ -203,7 +220,7 @@ const workExperiences = {
       display: false,
       role: "Experience Slot 4",
       company: "Add Company",
-      companylogo: require("./assets/images/automationLogo.svg"),
+      companylogo: automationLogo,
       date: "Add Date",
       desc: "Add your experience description here.",
       descBullets: []
@@ -212,7 +229,7 @@ const workExperiences = {
       display: false,
       role: "Experience Slot 5",
       company: "Add Company",
-      companylogo: require("./assets/images/automationLogo.svg"),
+      companylogo: automationLogo,
       date: "Add Date",
       desc: "Add your experience description here.",
       descBullets: []
@@ -221,7 +238,7 @@ const workExperiences = {
       display: false,
       role: "Experience Slot 6",
       company: "Add Company",
-      companylogo: require("./assets/images/automationLogo.svg"),
+      companylogo: automationLogo,
       date: "Add Date",
       desc: "Add your experience description here.",
       descBullets: []
@@ -238,14 +255,14 @@ const bigProjects = {
   title: "Selected Projects",
   subtitle: "PRODUCTS, AUTOMATION AND FULL-STACK ENGINEERING",
   projects: [
-    {image: require("./assets/images/fintechLogo.svg"), projectName: "Payment Platform Engineering", projectDesc: "Backend and web features for payment operations: payout and settlement verification, manual transfers, receipts, audit logging, transaction search, and job scheduling.", footerLink: []},
-    {image: require("./assets/images/vaultHubLogo.svg"), projectName: "VaultHub", projectDesc: "Bank account inventory and operational tools with permission-aware credential management, Excel import, audits, and a streamlined interface.", footerLink: []},
-    {image: require("./assets/images/eshopLogo.svg"), projectName: "Telegram E-Shop", projectDesc: "Digital product Telegram bot with wallet/deposit flows, KHQR payments, automated payment-message matching, inventory, and promotions.", footerLink: []},
-    {image: require("./assets/images/windyCastLogo.svg"), projectName: "WindyCast", projectDesc: "In-development Android-to-PC game mirroring with QR pairing, screen capture and Windows receiver workflows.", footerLink: [{"name":"View GitHub","url":"https://github.com/windymaster009/streamlabintoandroid"}]},
-    {image: require("./assets/images/telegramDriveLogo.svg"), projectName: "Telegram Drive", projectDesc: "A Telegram-backed file workflow app with folder views, browsing, sharing, metadata editing and search.", footerLink: [{"name":"View GitHub","url":"https://github.com/windymaster009/Telegram-Drive"}]},
-    {image: require("./assets/images/solarHomeLogo.svg"), projectName: "Solar Home / Raspberry Pi", projectDesc: "Self-hosted web services and operational automation running on Linux and Raspberry Pi with PM2 and secure remote access.", footerLink: [{"name":"View GitHub","url":"https://github.com/windymaster009/solarhome"}]},
-    {image: require("./assets/images/scannerLogo.svg"), projectName: "Phone Admin Dashboard", projectDesc: "Android-connected dashboard for barcode-scanner-style workflows, device connectivity and input tooling.", footerLink: [{"name":"View GitHub","url":"https://github.com/windymaster009/phone-admin-dashboard"}]},
-    {image: require("./assets/images/automationLogo.svg"), projectName: "Automation Projects", projectDesc: "Telegram/Discord utilities, scheduled messages, listener workflows and other tools for removing repetitive tasks.", footerLink: [{"name":"View GitHub","url":"https://github.com/windymaster009"}]}
+    {image: fintechLogo, projectName: "Payment Platform Engineering", projectDesc: "Backend and web features for payment operations: payout and settlement verification, manual transfers, receipts, audit logging, transaction search, and job scheduling.", footerLink: []},
+    {image: vaultHubLogo, projectName: "VaultHub", projectDesc: "Bank account inventory and operational tools with permission-aware credential management, Excel import, audits, and a streamlined interface.", footerLink: []},
+    {image: eshopLogo, projectName: "Telegram E-Shop", projectDesc: "Digital product Telegram bot with wallet/deposit flows, KHQR payments, automated payment-message matching, inventory, and promotions.", footerLink: []},
+    {image: windyCastLogo, projectName: "WindyCast", projectDesc: "In-development Android-to-PC game mirroring with QR pairing, screen capture and Windows receiver workflows.", footerLink: [{"name":"View GitHub","url":"https://github.com/windymaster009/streamlabintoandroid"}]},
+    {image: telegramDriveLogo, projectName: "Telegram Drive", projectDesc: "A Telegram-backed file workflow app with folder views, browsing, sharing, metadata editing and search.", footerLink: [{"name":"View GitHub","url":"https://github.com/windymaster009/Telegram-Drive"}]},
+    {image: solarHomeLogo, projectName: "Solar Home / Raspberry Pi", projectDesc: "Self-hosted web services and operational automation running on Linux and Raspberry Pi with PM2 and secure remote access.", footerLink: [{"name":"View GitHub","url":"https://github.com/windymaster009/solarhome"}]},
+    {image: scannerLogo, projectName: "Phone Admin Dashboard", projectDesc: "Android-connected dashboard for barcode-scanner-style workflows, device connectivity and input tooling.", footerLink: [{"name":"View GitHub","url":"https://github.com/windymaster009/phone-admin-dashboard"}]},
+    {image: automationLogo, projectName: "Automation Projects", projectDesc: "Telegram/Discord utilities, scheduled messages, listener workflows and other tools for removing repetitive tasks.", footerLink: [{"name":"View GitHub","url":"https://github.com/windymaster009"}]}
   ],
   display: true
 };
@@ -259,7 +276,7 @@ const achievementSection = {
       title: "Production Self-Hosting",
       subtitle:
         "Operate multiple applications on a Raspberry Pi using Linux, PM2, tunnels, remote networking and automated restarts.",
-      image: require("./assets/images/piHighlight.svg"),
+      image: piHighlight,
       imageAlt: "Raspberry Pi self hosting",
       footerLink: [
         {
@@ -272,7 +289,7 @@ const achievementSection = {
       title: "Automation & Bot Systems",
       subtitle:
         "Built Telegram and Discord systems with queues, payment listeners, admin workflows, scheduling and automated user flows.",
-      image: require("./assets/images/botHighlight.svg"),
+      image: botHighlight,
       imageAlt: "Automation and bots",
       footerLink: [
         {
@@ -285,7 +302,7 @@ const achievementSection = {
       title: "Multi-Stack Builder",
       subtitle:
         "Projects span JavaScript, TypeScript, Python, Java, PHP/Laravel, Vue, React, bots, automation and systems tooling.",
-      image: require("./assets/images/codeHighlight.svg"),
+      image: codeHighlight,
       imageAlt: "Multi stack development",
       footerLink: [
         {

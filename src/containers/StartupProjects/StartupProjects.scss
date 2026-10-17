@@ -24,7 +24,7 @@
   padding: 1.5rem;
   border-radius: 10px;
   border: 1px solid $lightBorder1;
-  justify-content: center;
+  justify-content: flex-start;
 }
 .project-card-light {
   box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
@@ -41,7 +41,22 @@
 }
 
 .project-detail {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
   text-align: center;
+}
+
+.project-detail .card-title {
+  display: flex;
+  min-height: 52px;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-detail .card-subtitle {
+  flex: 1;
+  margin-bottom: 18px;
 }
 .project-card-light:hover {
   box-shadow: $lightBoxShadowDark 0px 20px 30px -10px;
@@ -51,11 +66,20 @@
 }
 .project-image {
   position: relative;
-  height: 250px;
+  width: 100%;
+  height: 180px;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.project-image .card-image {
+  width: 100%;
+  height: 100%;
+  max-width: none;
+  object-fit: contain;
+  object-position: center;
 }
 
 .projects-container {
@@ -80,6 +104,11 @@
   padding: 0 0.75em;
   cursor: pointer;
   transition: 0.2s ease-in;
+}
+
+.project-card-footer {
+  min-height: 24px;
+  margin-top: auto;
 }
 
 @media (max-width: 768px) {

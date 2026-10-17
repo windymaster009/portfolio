@@ -1,4 +1,8 @@
 * text eol=lf
+*.jpg binary
+*.jpeg binary
+*.png binary
+*.webp binary
 
 # Denote all files that are truly binary and should not be modified
 *.ttf binary

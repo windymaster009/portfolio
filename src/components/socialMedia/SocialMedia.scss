@@ -25,7 +25,8 @@
   user-select: none;
   width: 2.6rem;
   margin-bottom: 10px;
-  transition: 0.2s ease-in;
+  box-shadow: 0 7px 16px rgba(23, 28, 40, 0.14);
+  transition: transform 0.22s ease, box-shadow 0.22s ease, background-color 0.22s ease;
 }
 
 .facebook i {
@@ -52,6 +53,10 @@
   background-color: $twitter;
 }
 
+.telegram i {
+  background-color: #229ed9;
+}
+
 .medium i {
   background-color: $medium;
 }
@@ -70,6 +75,7 @@
 
 /* Hover Transition */
 .twitter i:hover,
+.telegram i:hover,
 .google i:hover,
 .gitlab i:hover,
 .github i:hover,
@@ -80,6 +86,8 @@
 .kaggle i:hover,
 .medium i:hover {
   background-color: $textColor;
+  transform: translateY(-4px) rotate(-4deg) scale(1.06);
+  box-shadow: 0 12px 22px rgba(23, 28, 40, 0.22);
 }
 
 /* Media Query */

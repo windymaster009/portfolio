@@ -8,10 +8,18 @@ import serverCover from "../../assets/images/projectServerCover.svg";
 import automationCover from "../../assets/images/projectAutomationCover.svg";
 import webCover from "../../assets/images/projectWebCover.svg";
 import genericCover from "../../assets/images/projectGenericCover.svg";
+import streamlabCover from "../../assets/images/streamlabintoandroid.png";
+import phoneAdminCover from "../../assets/images/phone-admin-dashboard.png";
 
 function getProjectVisual(name = "") {
   const value = name.toLowerCase();
 
+  if (value === "streamlabintoandroid") {
+    return {image: streamlabCover, label: "Mobile App"};
+  }
+  if (value === "phone-admin-dashboard") {
+    return {image: phoneAdminCover, label: "Dashboard"};
+  }
   if (/shop|eshop|e-commerce|ecommerce|laravel-e-shop/.test(value)) {
     return {image: shopCover, label: "Commerce"};
   }
