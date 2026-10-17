@@ -1,0 +1,57 @@
+name: Collect real browser captures
+on:
+  push:
+    branches: [capture-real-projects]
+    paths:
+      - .github/workflows/collect-real-shots.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+  actions: read
+jobs:
+  collect:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: capture-real-projects
+      - name: Download actual Sonic Automotive captures
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 38999201262
+          name: real-project-screenshots
+          path: real-project-screenshots
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Download actual Laravel E-Shop captures
+        uses: actions/download-artifact@v4
+        with:
+          run-id: 38999354354
+          name: laravel-e-shop-screenshots
+          path: laravel-original
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Make genuine cropped cover versions
+        run: |
+          python3 -m pip install --quiet Pillow
+          cp laravel-original/*.png real-project-screenshots/
+          cp laravel-original/*report.json real-project-screenshots/ 2>/dev/null || true
+          python3 - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          folder=Path('real-project-screenshots')
+          for p in folder.glob('*.png'):
+            if p.stem.endswith('-cover'): continue
+            with Image.open(p) as source:
+              img=source.convert('RGB')
+              cover=img.crop((0,0,img.width,min(img.height,round(img.width/2.67))))
+              cover.save(p.with_name(p.stem+'-cover.png'),optimize=True)
+              print(p, img.size, cover.size)
+          PY
+      - name: Save screenshots to review branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add real-project-screenshots
+          git commit -m "docs: add real Chrome screenshots for Sonic and Laravel"
+          git fetch origin capture-real-projects
+          git rebase origin/capture-real-projects
+          git push origin HEAD:capture-real-projects
