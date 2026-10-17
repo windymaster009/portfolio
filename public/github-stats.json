@@ -1,0 +1,87 @@
+{
+  "projects": 28,
+  "languageCount": 8,
+  "technologyCount": 9,
+  "githubSince": 2020,
+  "languages": [
+    {
+      "name": "JavaScript",
+      "projects": 10,
+      "percent": 35.714285714285715
+    },
+    {
+      "name": "Python",
+      "projects": 5,
+      "percent": 17.857142857142858
+    },
+    {
+      "name": "TypeScript",
+      "projects": 3,
+      "percent": 10.714285714285714
+    },
+    {
+      "name": "Kotlin",
+      "projects": 3,
+      "percent": 10.714285714285714
+    },
+    {
+      "name": "HTML",
+      "projects": 2,
+      "percent": 7.142857142857142
+    },
+    {
+      "name": "Lua",
+      "projects": 1,
+      "percent": 3.571428571428571
+    },
+    {
+      "name": "Blade",
+      "projects": 1,
+      "percent": 3.571428571428571
+    },
+    {
+      "name": "Vue",
+      "projects": 1,
+      "percent": 3.571428571428571
+    }
+  ],
+  "technologies": [
+    {
+      "name": "Discord API",
+      "projects": 3
+    },
+    {
+      "name": "React",
+      "projects": 2
+    },
+    {
+      "name": "Telegram Bot API",
+      "projects": 2
+    },
+    {
+      "name": "Vite",
+      "projects": 2
+    },
+    {
+      "name": "Express",
+      "projects": 1
+    },
+    {
+      "name": "Laravel",
+      "projects": 1
+    },
+    {
+      "name": "MongoDB",
+      "projects": 1
+    },
+    {
+      "name": "Telethon",
+      "projects": 1
+    },
+    {
+      "name": "Vue.js",
+      "projects": 1
+    }
+  ],
+  "generatedAt": "2026-10-17T03:01:18.714Z"
+}

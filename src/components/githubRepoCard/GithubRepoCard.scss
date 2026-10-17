@@ -1,0 +1,141 @@
+@import "../../_globalColor";
+
+.repo-card-div {
+  color: $githubRepoCardColor;
+  background-color: #ffffff;
+  box-shadow: $lightBoxShadowDark 0px 10px 30px -15px;
+  cursor: pointer;
+  border: 1px solid #ececf2;
+  border-radius: 18px;
+  overflow: hidden;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+
+.repo-card-div:hover,
+.repo-card-div:focus {
+  transform: translateY(-6px);
+  border-color: #c9c4ff;
+  box-shadow: 0px 22px 40px -16px rgba(85, 25, 139, 0.35);
+  outline: none;
+}
+
+.repo-cover {
+  position: relative;
+  height: 170px;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.repo-card-div:hover .repo-cover {
+  filter: saturate(1.12);
+}
+
+.repo-cover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(to bottom, transparent 55%, rgba(0, 0, 0, 0.13));
+  pointer-events: none;
+}
+
+.repo-cover-badge {
+  position: absolute;
+  z-index: 2;
+  top: 14px;
+  left: 14px;
+  padding: 6px 10px;
+  border-radius: 999px;
+  color: #ffffff;
+  background: rgba(12, 15, 24, 0.44);
+  backdrop-filter: blur(8px);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.repo-card-body {
+  padding: 1.45rem 1.6rem 1.35rem;
+}
+
+.repo-stats {
+  display: flex;
+  justify-content: space-between;
+  font-size: 13px;
+  color: $githubRepoCardRepoCardStatsColor;
+}
+
+.repo-left-stat {
+  flex-grow: 1;
+  display: flex;
+}
+
+.language-color {
+  width: 10px;
+  height: 10px;
+  background-color: $githubRepoCardLanguageColorBG;
+  margin-right: 0.25rem;
+  border-radius: 100%;
+}
+
+.repo-left-stat span {
+  display: flex;
+  align-items: center;
+  margin-right: 0.75rem;
+}
+
+.repo-name-div {
+  display: flex;
+  align-items: center;
+}
+
+.repo-svg {
+  margin-right: 0.5rem;
+  min-width: 16px;
+  fill: #55198b;
+}
+
+.repo-name {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  color: $githubRepoCardRepoNameColor;
+  font-size: 23px;
+  font-weight: 700;
+  letter-spacing: -0.5px;
+  overflow: hidden;
+  margin: 0;
+  height: 32px;
+}
+
+.repo-star-svg {
+  margin-right: 0.3rem;
+}
+
+.repo-description {
+  min-height: 48px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  color: #666c75;
+  line-height: 1.5;
+}
+
+@media (max-width: 768px) {
+  .repo-cover {
+    height: 145px;
+  }
+
+  .repo-card-body {
+    padding: 1.2rem;
+  }
+
+  .repo-name {
+    font-size: 20px;
+  }
+}

@@ -1,0 +1,83 @@
+%PDF-1.4
+1 0 obj
+<< /Type /Catalog /Pages 2 0 R >>
+endobj
+2 0 obj
+<< /Type /Pages /Kids [3 0 R] /Count 1 >>
+endobj
+3 0 obj
+<< /Type /Page /Parent 2 0 R /MediaBox [0 0 595.28 841.89] /Resources << /Font << /F1 4 0 R /F2 5 0 R >> >> /Contents 6 0 R >>
+endobj
+4 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica >>
+endobj
+5 0 obj
+<< /Type /Font /Subtype /Type1 /BaseFont /Helvetica-Bold >>
+endobj
+6 0 obj
+<< /Length 4877 >>
+stream
+0.08 0.17 0.29 rg BT /F2 25 Tf 1 0 0 1 45 797 Tm (KEVIN NHIM) Tj ET
+0.39 0.46 0.57 rg BT /F2 9.2 Tf 1 0 0 1 45 775 Tm (FULL-STACK SOFTWARE DEVELOPER | BACKEND, FINTECH & AUTOMATION) Tj ET
+0.39 0.46 0.57 rg BT /F1 8.7 Tf 1 0 0 1 45 758 Tm (Phnom Penh, Cambodia  |  Kevinnhim123@gmail.com  |  github.com/windymaster009) Tj ET
+0.39 0.46 0.57 rg BT /F1 8.5 Tf 1 0 0 1 45 744 Tm (Telegram: t.me/nhimkevin) Tj ET
+0.19 0.35 0.87 rg BT /F2 10 Tf 1 0 0 1 45 726 Tm (PROFILE) Tj ET
+0.78 0.83 0.91 RG 0.65 w 45 719 m 550 719 l S
+0.10 0.16 0.28 rg BT /F1 8.9 Tf 1 0 0 1 45 703 Tm (Software developer experienced in payment operations, API integrations, admin and merchant tools, and automation.) Tj ET
+0.10 0.16 0.28 rg BT /F1 8.9 Tf 1 0 0 1 45 691 Tm (Builds practical full-stack applications and self-hosted services using JavaScript/TypeScript, Python, React,) Tj ET
+0.10 0.16 0.28 rg BT /F1 8.9 Tf 1 0 0 1 45 679 Tm (Node.js, Linux and databases.) Tj ET
+0.19 0.35 0.87 rg BT /F2 10 Tf 1 0 0 1 45 654 Tm (PROFESSIONAL EXPERIENCE) Tj ET
+0.78 0.83 0.91 RG 0.65 w 45 647 m 550 647 l S
+0.08 0.17 0.29 rg BT /F2 9.2 Tf 1 0 0 1 45 631 Tm (Software Developer | Payment Platform) Tj ET
+0.39 0.46 0.57 rg BT /F1 8 Tf 1 0 0 1 442 631 Tm (Current) Tj ET
+0.10 0.16 0.28 rg BT /F1 8.5 Tf 1 0 0 1 45 617 Tm (Backend services and admin/merchant workflows used in fintech operations and UAT.) Tj ET
+0.19 0.35 0.87 rg BT /F2 8.5 Tf 1 0 0 1 51 603 Tm (- ) Tj ET
+0.10 0.16 0.28 rg BT /F1 8.4 Tf 1 0 0 1 63 603 Tm (Settlement and payout name verification, receipt downloads, manual transfers and transaction search.) Tj ET
+0.19 0.35 0.87 rg BT /F2 8.5 Tf 1 0 0 1 51 589 Tm (- ) Tj ET
+0.10 0.16 0.28 rg BT /F1 8.4 Tf 1 0 0 1 63 589 Tm (Audit logging, operational validation, queue-backed scheduler restarts, API integration and debugging.) Tj ET
+0.08 0.17 0.29 rg BT /F2 9.2 Tf 1 0 0 1 45 574 Tm (IT Support | CISA) Tj ET
+0.39 0.46 0.57 rg BT /F1 8 Tf 1 0 0 1 442 574 Tm (From Nov 2022) Tj ET
+0.10 0.16 0.28 rg BT /F1 8.5 Tf 1 0 0 1 45 560 Tm (Hardware/software troubleshooting, workstation support, networking and daily operational maintenance.) Tj ET
+0.08 0.17 0.29 rg BT /F2 9.2 Tf 1 0 0 1 45 545 Tm (Independent Developer | Personal & open source) Tj ET
+0.39 0.46 0.57 rg BT /F1 8 Tf 1 0 0 1 442 545 Tm (Ongoing) Tj ET
+0.10 0.16 0.28 rg BT /F1 8.5 Tf 1 0 0 1 45 531 Tm (Telegram commerce, file tools, Android utilities, automation and Linux/Raspberry Pi services.) Tj ET
+0.39 0.46 0.57 rg BT /F1 8 Tf 1 0 0 1 45 516 Tm (Earlier: Freelance work \(Bongthom\), Jun-Sep 2022; Solar Home, Jan-Jun 2022.) Tj ET
+0.19 0.35 0.87 rg BT /F2 10 Tf 1 0 0 1 45 500 Tm (SELECTED PROJECTS) Tj ET
+0.78 0.83 0.91 RG 0.65 w 45 493 m 550 493 l S
+0.08 0.17 0.29 rg BT /F2 9.2 Tf 1 0 0 1 45 477 Tm (VaultHub | Bank inventory & operations) Tj ET
+0.39 0.46 0.57 rg BT /F1 8 Tf 1 0 0 1 442 477 Tm (2026) Tj ET
+0.10 0.16 0.28 rg BT /F1 8.5 Tf 1 0 0 1 45 463 Tm (Access-aware credential tools, Excel import validation, inventory tracking and audit/UX features.) Tj ET
+0.08 0.17 0.29 rg BT /F2 9.2 Tf 1 0 0 1 45 448 Tm (Telegram E-Shop | Python, Telegram, MongoDB) Tj ET
+0.39 0.46 0.57 rg BT /F1 8 Tf 1 0 0 1 442 448 Tm (2026) Tj ET
+0.10 0.16 0.28 rg BT /F1 8.5 Tf 1 0 0 1 45 434 Tm (Digital product storefront, inventory, wallet/KHQR payments and automated ABA message matching.) Tj ET
+0.08 0.17 0.29 rg BT /F2 9.2 Tf 1 0 0 1 45 419 Tm (WindyCast | Android & Windows streaming) Tj ET
+0.39 0.46 0.57 rg BT /F1 8 Tf 1 0 0 1 442 419 Tm (2026) Tj ET
+0.10 0.16 0.28 rg BT /F1 8.5 Tf 1 0 0 1 45 405 Tm (In-development local game mirroring with QR pairing and capture/receiver applications.) Tj ET
+0.08 0.17 0.29 rg BT /F2 9.2 Tf 1 0 0 1 45 390 Tm (Telegram Drive | React, TypeScript, Tauri) Tj ET
+0.39 0.46 0.57 rg BT /F1 8 Tf 1 0 0 1 442 390 Tm (2026) Tj ET
+0.10 0.16 0.28 rg BT /F1 8.5 Tf 1 0 0 1 45 376 Tm (File management via Telegram storage, with sharing, metadata editing, search and folders.) Tj ET
+0.19 0.35 0.87 rg BT /F2 10 Tf 1 0 0 1 45 351 Tm (TECHNICAL SKILLS) Tj ET
+0.78 0.83 0.91 RG 0.65 w 45 344 m 550 344 l S
+0.10 0.16 0.28 rg BT /F1 8.4 Tf 1 0 0 1 45 328 Tm (Languages: JavaScript, TypeScript, Python, Java, PHP, HTML, CSS | Frontend: React, Next.js, Vue, Tailwind | Backend:) Tj ET
+0.10 0.16 0.28 rg BT /F1 8.4 Tf 1 0 0 1 45 317 Tm (Node.js, REST APIs, FastAPI, Laravel | Tools: MongoDB, Redis, Git, Docker, Linux, PM2, Raspberry Pi, Cloudflare Tunnel,) Tj ET
+0.10 0.16 0.28 rg BT /F1 8.4 Tf 1 0 0 1 45 306 Tm (Tailscale.) Tj ET
+0.19 0.35 0.87 rg BT /F2 10 Tf 1 0 0 1 45 282 Tm (EDUCATION) Tj ET
+0.78 0.83 0.91 RG 0.65 w 45 275 m 550 275 l S
+0.10 0.16 0.28 rg BT /F1 8.8 Tf 1 0 0 1 45 259 Tm (National Polytechnic Institute of Cambodia \(NPIC\) - Computer Science \(2020-2024\)) Tj ET
+0.10 0.16 0.28 rg BT /F1 8.8 Tf 1 0 0 1 45 245 Tm (Pannasastra University of Cambodia \(PUC\) - Loyola School \(2018-2020\)) Tj ET
+endstream
+endobj
+xref
+0 7
+0000000000 65535 f 
+0000000009 00000 n 
+0000000058 00000 n 
+0000000115 00000 n 
+0000000257 00000 n 
+0000000327 00000 n 
+0000000402 00000 n 
+trailer
+<< /Size 7 /Root 1 0 R >>
+startxref
+5330
+%%EOF
