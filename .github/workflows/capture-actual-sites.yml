@@ -1,0 +1,79 @@
+name: Capture actual project UI
+on:
+  push:
+    branches: [capture-real-projects]
+    paths:
+      - .github/workflows/capture-actual-sites.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  screenshots:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: capture-real-projects
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Check out real source repositories
+        run: |
+          git clone --depth 1 --branch main https://github.com/windymaster009/solarhome.git "$RUNNER_TEMP/solarhome"
+          git clone --depth 1 --branch master https://github.com/windymaster009/Vue-website-ecommerce.git "$RUNNER_TEMP/sonic"
+      - name: Install frontends and screenshot tooling
+        run: |
+          npm --prefix "$RUNNER_TEMP/solarhome/frontend" install --legacy-peer-deps --no-audit --no-fund
+          npm --prefix "$RUNNER_TEMP/sonic/SonicAutomotive" install --legacy-peer-deps --no-audit --no-fund
+          mkdir -p "$RUNNER_TEMP/capture"
+          npm --prefix "$RUNNER_TEMP/capture" install playwright-core@1.56.0 --no-audit --no-fund
+      - name: Run original applications and capture screenshots with Chrome
+        shell: bash
+        env:
+          CI: 'false'
+        run: |
+          set -euo pipefail
+          nohup npm --prefix "$RUNNER_TEMP/solarhome/frontend" run dev -- --host 127.0.0.1 --port 5173 --strictPort > "$RUNNER_TEMP/solar.log" 2>&1 &
+          nohup npm --prefix "$RUNNER_TEMP/sonic/SonicAutomotive" run serve -- --host 127.0.0.1 --port 5174 > "$RUNNER_TEMP/sonic.log" 2>&1 &
+          for i in $(seq 1 90); do
+            if curl --fail -s http://127.0.0.1:5173 >/dev/null && curl --fail -s http://127.0.0.1:5174 >/dev/null; then break; fi
+            sleep 2
+          done
+          echo "Solar Home logs"
+          tail -n 12 "$RUNNER_TEMP/solar.log"
+          echo "Sonic Automotive logs"
+          tail -n 12 "$RUNNER_TEMP/sonic.log"
+          test -s "$(find "$RUNNER_TEMP/solarhome/frontend" -name package.json -print -quit)"
+          test -n "$(which google-chrome || which chromium)"
+          export CHROME_BIN="$(which google-chrome || which chromium)"
+          export CAPTURE_MODULE="$RUNNER_TEMP/capture"
+          node scripts/capture-actual-sites.cjs
+          python3 - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          for file in Path("real-project-screenshots").glob("*.png"):
+              image = Image.open(file).convert("RGB")
+              image.crop((0,0,image.width,min(image.height,round(image.width/2.67)))).save(file.with_name(file.stem+"-cover.png"),optimize=True)
+          PY
+      - name: Upload actual screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: real-project-screenshots
+          path: real-project-screenshots/
+          if-no-files-found: warn
+      - name: Commit real browser screenshots on review branch
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -e real-project-screenshots/capture-report.json
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add real-project-screenshots
+          if ! git diff --cached --quiet; then
+            git commit -m "docs: capture actual Solar Home and Sonic Automotive UI"
+            git fetch origin capture-real-projects
+            git rebase origin/capture-real-projects
+            git push origin HEAD:capture-real-projects
+          fi
