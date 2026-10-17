@@ -1,0 +1,99 @@
+name: Capture actual Laravel E-Shop UI
+on:
+  push:
+    branches: [capture-laravel-e-shop]
+    paths:
+      - .github/workflows/capture-laravel.yml
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  screenshot:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    services:
+      mysql:
+        image: mysql:8.0
+        env:
+          MYSQL_ALLOW_EMPTY_PASSWORD: 'yes'
+          MYSQL_DATABASE: e-shop
+        ports:
+          - 3306:3306
+        options: >-
+          --health-cmd="mysqladmin ping --silent"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=8
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: capture-laravel-e-shop
+      - uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+          extensions: mbstring, intl, zip, curl, gd, bcmath, pdo_mysql
+          tools: composer:v2
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+      - name: Clone real Laravel E-Shop
+        run: git clone --depth 1 --branch main https://github.com/windymaster009/laravel-e-shop.git "$RUNNER_TEMP/laravel-e-shop"
+      - name: Install PHP dependencies and sample database
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd "$RUNNER_TEMP/laravel-e-shop"
+          composer install --prefer-dist --no-interaction --no-progress --no-scripts
+          cp .env.example .env
+          sed -i 's/DB_PASSWORD=.*/DB_PASSWORD=/' .env
+          for i in $(seq 1 30); do
+            mysqladmin --host=127.0.0.1 --user=root ping >/dev/null 2>&1 && break
+            sleep 2
+          done
+          mysql --host=127.0.0.1 --user=root e-shop < database/e-shop.sql
+          php artisan key:generate --force
+          php artisan storage:link || true
+          php artisan config:clear
+          mkdir -p storage/framework/cache storage/framework/sessions storage/framework/views
+          echo "Laravel dependencies and sample SQL initialized."
+      - name: Run original storefront and capture with real Chromium
+        shell: bash
+        run: |
+          set -euo pipefail
+          nohup php -S 127.0.0.1:8000 -t "$RUNNER_TEMP/laravel-e-shop/public" "$RUNNER_TEMP/laravel-e-shop/server.php" > "$RUNNER_TEMP/laravel.log" 2>&1 &
+          for i in $(seq 1 40); do
+             curl -s http://127.0.0.1:8000/ >/dev/null && break
+             sleep 2
+          done
+          mkdir -p "$RUNNER_TEMP/capture"
+          npm --prefix "$RUNNER_TEMP/capture" install playwright-core@1.56.0 --no-audit --no-fund
+          export CAPTURE_MODULE="$RUNNER_TEMP/capture"
+          export CHROME_BIN="$(which google-chrome || which chromium)"
+          node scripts/capture-laravel-site.cjs
+          python3 - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          for p in Path('real-project-screenshots').glob('*.png'):
+              im=Image.open(p).convert('RGB')
+              im.crop((0,0,im.width,min(im.height,round(im.width/2.67)))).save(p.with_name(p.stem+'-cover.png'), optimize=True)
+          PY
+      - name: Upload screenshots and diagnostics
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: laravel-e-shop-screenshots
+          path: real-project-screenshots/
+          if-no-files-found: warn
+      - name: Commit captured screenshots
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add real-project-screenshots
+          if ! git diff --cached --quiet; then
+            git commit -m "docs: capture actual Laravel E-Shop storefront"
+            git fetch origin capture-laravel-e-shop
+            git rebase origin/capture-laravel-e-shop
+            git push origin HEAD:capture-laravel-e-shop
+          fi
