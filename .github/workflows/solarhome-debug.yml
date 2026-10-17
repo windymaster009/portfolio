@@ -1,22 +1,65 @@
-name: Diagnose Solar Home build
+name: Capture actual Solar Home UI
 on:
   push:
     branches: [capture-solarhome]
     paths: [.github/workflows/solarhome-debug.yml]
   workflow_dispatch:
 permissions:
-  contents: read
+  contents: write
 jobs:
-  debug:
+  screenshot:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
       - uses: actions/checkout@v4
+        with:
+          ref: capture-solarhome
       - uses: actions/setup-node@v4
         with: {node-version: '20'}
-      - name: Clone and test original Solar Home frontend
+      - name: Clone original Solar Home frontend and install missing peer
         run: |
           git clone --depth 1 --branch main https://github.com/windymaster009/solarhome.git "$RUNNER_TEMP/solarhome"
           npm --prefix "$RUNNER_TEMP/solarhome/frontend" install --legacy-peer-deps --no-audit --no-fund
+          npm --prefix "$RUNNER_TEMP/solarhome/frontend" install react-is@18.3.1 --no-save --legacy-peer-deps --no-audit --no-fund
           cd "$RUNNER_TEMP/solarhome/frontend"
           npm run build
+      - name: Launch original Solar Home and screenshot real pages
+        shell: bash
+        run: |
+          set -euo pipefail
+          nohup npm --prefix "$RUNNER_TEMP/solarhome/frontend" run preview -- --host 127.0.0.1 --port 5173 > "$RUNNER_TEMP/solar.log" 2>&1 &
+          for i in $(seq 1 40); do
+            curl --fail -s http://127.0.0.1:5173 >/dev/null && break
+            sleep 1
+          done
+          curl --fail -s http://127.0.0.1:5173 >/dev/null
+          mkdir -p "$RUNNER_TEMP/capture"
+          npm --prefix "$RUNNER_TEMP/capture" install playwright-core@1.56.0 --no-audit --no-fund
+          export CAPTURE_MODULE="$RUNNER_TEMP/capture"
+          export CHROME_BIN="$(which google-chrome || which chromium)"
+          node scripts/capture-solar.cjs
+          python3 -m pip install --quiet Pillow
+          python3 - <<'PY'
+          from PIL import Image
+          from pathlib import Path
+          for p in Path('real-project-screenshots').glob('*.png'):
+            with Image.open(p) as src:
+              im=src.convert('RGB')
+              im.crop((0,0,im.width,min(im.height,round(im.width/2.67)))).save(p.with_name(p.stem+'-cover.png'), optimize=True)
+          PY
+      - name: Upload real screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: solarhome-real-screenshots
+          path: real-project-screenshots/
+          if-no-files-found: warn
+      - name: Commit screenshots to review branch
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add real-project-screenshots
+          git commit -m "docs: capture actual Solar Home catalog UI"
+          git fetch origin capture-solarhome
+          git rebase origin/capture-solarhome
+          git push origin HEAD:capture-solarhome
