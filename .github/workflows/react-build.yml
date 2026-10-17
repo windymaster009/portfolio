@@ -1,0 +1,28 @@
+name: React portfolio build
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+permissions:
+  contents: read
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps --no-audit --no-fund
+      - name: Build portfolio
+        env:
+          CI: "false"
+        run: npm run build
+      - name: Check CV output
+        run: |
+          test -s build/index.html
+          test -s build/Kevin_Nhim_CV_2026.pdf
+          test -s build/cv.html
+          test -s build/manifest.json
