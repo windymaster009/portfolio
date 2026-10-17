@@ -1,0 +1,22 @@
+name: Diagnose Solar Home build
+on:
+  push:
+    branches: [capture-solarhome]
+    paths: [.github/workflows/solarhome-debug.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  debug:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: {node-version: '20'}
+      - name: Clone and test original Solar Home frontend
+        run: |
+          git clone --depth 1 --branch main https://github.com/windymaster009/solarhome.git "$RUNNER_TEMP/solarhome"
+          npm --prefix "$RUNNER_TEMP/solarhome/frontend" install --legacy-peer-deps --no-audit --no-fund
+          cd "$RUNNER_TEMP/solarhome/frontend"
+          npm run build
